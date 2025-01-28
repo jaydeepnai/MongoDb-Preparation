@@ -201,6 +201,9 @@ db.products.insertMany([
         "discounted": false
     }
 ])
+
+//PS: The .find() method by default applies $and operator to its query conditions
+
 //Question: 1
 //Find products where the price is 850.00 and the category is "Home Appliances"
 db.products.find({
@@ -370,5 +373,14 @@ db.products.find({
   $and: [
     { "specs.storage.size": { $in: ["1TB", "512GB"] } },
     { available: { $eq: true } }
+  ]
+})
+
+//Question:20
+//Find products with a category of "Electronics" and price equal to 999.99:
+db.products.find({
+  $and: [
+    { category: { $eq: "Electronics" } },
+    { price: { $eq: 999.99 } }
   ]
 })

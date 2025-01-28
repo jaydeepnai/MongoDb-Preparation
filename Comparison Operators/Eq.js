@@ -314,3 +314,40 @@ db.products.find({
     ]
 })
 
+//Question-15: Count products where the category is "Electronics"
+db.products.countDocuments({
+    category:"Electronics"
+})
+
+//Question-16: Find distinct product names where the price is exactly 999.99
+db.products.distinct("productName",{
+  price:999.99
+})
+
+//Question-17: Update products to set a new discount value if the product price is greater than 1000
+db.products.updateMany({
+  price:{
+    $gt: 1000
+  }
+},{
+  $set:{
+    discounted:true
+  }
+})
+
+//Question-18: Delete a product by its name
+db.products.deleteOne({
+  productName:"catt.in"
+})
+
+//Question-19: Find products where the tags array contains exactly 3 items:
+db.products.find({
+  tags:{
+    $size:3
+  }
+})
+
+//Question-20: Find products where the "dimensions.width" is exactly 35.8.
+db.products.find({
+    "dimensions.width": { $eq: 35.8 }
+})

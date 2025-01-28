@@ -347,3 +347,26 @@ db.products.find({
   ]
 });
 
+//Question-18: Find products where the category is either "Electronics" or "Home Appliances"
+db.products.find({
+    $or: [
+      { category: { $eq: "Electronics" } },
+      { category: { $eq: "Home Appliances" } }
+    ]
+})
+
+//Question-19: Find products where the discounted field is either true or the releaseDate is in 2023:
+db.products.find({
+    $or: [
+      { discounted: { $eq: true } },
+      { releaseDate: { $gte: new Date("2023-01-01") } }
+    ]
+})
+
+//Question-20: Find products where the tags contains either "gaming" or "laptop":
+db.products.find({
+    $or: [
+      { tags: { $eq: "gaming" } },
+      { tags: { $eq: "laptop" } }
+    ]
+})    
